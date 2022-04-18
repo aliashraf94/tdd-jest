@@ -39,3 +39,25 @@ PASS  ./sum.test.js
 You just successfully wrote your first test using Jest!
 
 This test used expect and toBe to test that two values were exactly identical.
+
+Unit Testing and the Arrange, Act and Assert (AAA) Pattern
+
+The AAA (Arrange-Act-Assert) pattern has become almost a standard across the industry. It suggests that you should divide your test method into three sections: arrange, act and assert. Each one of them only responsible for the part in which they are named after.
+
+The arrange section you only have code required to setup that specific test. Here objects would be created, mocks setup (if you are using one) and potentially expectations would be set.
+Then there is the Act, which should be the invocation of the method being tested.
+And on Assert you would simply check whether the expectations were met.
+
+Following this pattern does make the code quite well structured and easy to understand. In general lines, it would look like this:
+
+```
+const sum = require('./multiply');
+
+test("Two number should multiply", () => {
+    const number1 = 33; // Arrange
+    const number2 = 3;  // Arrange
+    const result = aaaMultiply(number1, number2);   // Act
+    expect(result).toBe(99) // Assert
+});
+
+```
